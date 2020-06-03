@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrator Dashboard{% endblock %}
+
+{% block body %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link type="text/css" rel="stylesheet" href="http://127.0.0.1/my_movies_lists/public/css/admin_index.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</head>
+
+<body>
+		<div class="header">
+		  	<h2 class="text-box">Administrator Dashboard</h2>
+		</div>
+
+		
+    <div class="container">  	
+	
+    	<div class="row">
+            
+            <div class="col-md-12">
+                <h4 class="text-center">User's Profile</h4>
+            </div>
+
+            <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+            
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Password</th>
+                            <th class="text-center">Admin Status</th>
+                            <th class="text-center">User Status</th>
+
+                                
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	     
+                        <tr>
+                            <td class="text-center">{{user.id}}</td>
+
+                            <td class="text-center">{{user.name}}</td>
+
+                            <td class="text-center">{{user.email}}</td>
+
+                            <td class="text-center">{{user.password}}</td>
+
+                            <td class="text-center">{{user.admin}}
+                                {% if user.admin == 1 %}
+                                <button type="button" rel="tooltip" class="btn btn-warning btn-link btn-just-icon btn-sm" data-original-title="" title="" name="admin">
+                                    <i class="yellow material-icons">verified_user</i>
+                                </button>
+
+                                {% else %}
+                                <button type="button" rel="tooltip" class="btn btn-default btn-link btn-just-icon btn-sm" data-original-title="" title="" name="admin">
+                                    <i class="material-icons">person</i>
+                                {% endif %}
+                                </button>
+                            </td>
+
+                            <td class="text-center">{{user.banned}}
+                                {% if user.banned == 1 %}
+                                <button type="button" rel="tooltip" class="btn btn-warning btn-link btn-just-icon btn-sm" data-original-title="" title="" name="ban">
+                                    <i class="material-icons">person_outline</i>
+                                </button>
+
+                                {% else %}
+                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-just-icon btn-sm" data-original-title="" title="" name="ban">
+                                    <i class="material-icons">how_to_reg</i>
+                                {% endif %}
+                                </button>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <a href="{{ path('admin')}}" class="btn btn-primary btn pull-left"><i class="material-icons">arrow_left</i>Back to dashboard</a>     
+                </div>
+            </div>
+        </div>                       
+    </div>
+    </div>
+</body>
+
+{% endblock %}

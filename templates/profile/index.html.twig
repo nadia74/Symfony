@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+
+
+
+<div class="container">
+    	
+            <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+            <h4><small>Your personnal informations</small></h4>
+                <div class="table-responsive">
+                <table class="table">
+                    
+                    <tbody>
+                        <tr>
+                            <td>{{username}}</td>
+                            <td>
+                                  <form action = "/modifyprofile">
+                                 <button type="submit" rel="tooltip" class="btn btn-warning btn-just-icon btn-sm" data-original-title="" title="">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                </form>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>{{email}}</td>
+                            <td>
+                            <form action="/modifymail">
+                                 <button type="submit" rel="tooltip" class="btn btn-warning btn-just-icon btn-sm" data-original-title="" title="">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>**********</td>
+                            <td>
+                             <form action="/modifypassword">
+                                 <button type="submit" rel="tooltip" class="btn btn-warning btn-just-icon btn-sm" data-original-title="" title="">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                            </form>
+   
+                            </td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+                             <form action="/confirmationdeleteaccount">
+
+        <button type="submit" class="btn btn-secondary" >Delete my account</button>
+
+                                </button>
+                                
+
+
+
+
+{% endblock %}

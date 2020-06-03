@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Movies Lists Manager{% endblock %}
+
+{% block body %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link type="text/css" rel="stylesheet" href="http://127.0.0.1/my_movies_lists/public/css/movies_lists.css">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</head>
+<body>
+		<div class="header">
+		  	<h2 class="text-box">My Movies Lists Dashboard</h2>
+		</div>
+
+		
+    <div class="container">  	
+	
+	<div class="split left">
+    	<div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">My Movies Lists</h3>
+            </div>
+            <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+
+            <div>
+                <a href="{{ path('newlist')}}" class="btn btn-primary btn-xs pull-right"><i class="material-icons">post_add</i></a>
+            </div>
+            
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">My Lists</th>
+                            <th class="text-center">Description</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for liste in listes %}      
+                        <tr>
+                            <td class="text-center">{{ liste.id }}</td>
+                            <td>{{ liste.listename }}</td>
+                            <td>{{ liste.description }}</td>
+                            <td class="text-center">
+
+                                <a href="{#{ path('show', {'id' : liste.id}) }#}">
+                                <button type="button" rel="tooltip" class="btn btn-default btn-link btn-just-icon btn-sm" data-original-title="" title="" name="show">
+                                    <i class="material-icons">local_movies</i>
+                                </button>
+                                </a>
+
+                                <a href="{{ path('editlist', {'id' : liste.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-success btn-link btn-just-icon btn-sm" data-original-title="" title="" name="edit">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                </a>
+
+                                <a href="{#{ path('shareList', {'id' : liste.id}) }#}">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-just-icon btn-sm" data-original-title="" title="" name="share">
+                                	<i class="material-icons">share</i>
+                                </button>
+                                </a>
+
+                                <a href="{{ path('deletelist', {'id' : liste.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-just-icon btn-sm" data-original-title="" title="" name="delete">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                                </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    	</div>
+    </div>
+    </div>
+
+    <div class="container">  	
+	
+	<div class="split right">
+    	<div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">My Movies Lists</h3>
+            </div>
+            <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+            
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">My Selected Movies</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{#% for movie in movies %#}      
+                        <tr>
+                            <td class="text-center">{#{movies.id}#}</td>
+                            <td>{#{movies.name}#}</td>
+                            <td class="text-center">
+
+                            	{#% if movie is fav %#}
+                                <button type="button" rel="tooltip" class="btn btn-success btn-link btn-just-icon btn-sm" data-original-title="" title="" name="fav" formaction="./fav" value={#{movie.id}#} type="submit">
+                                    <i class="yellow material-icons">star</i>
+                                </button>
+                                {#% else %#}
+                                <button type="button" rel="tooltip" class="yellow btn btn-success btn-link btn-just-icon btn-sm" data-original-title="" title="" name="notfav" formaction="./notfav" value={#{movie.id}#} type="submit">
+                                    <i class="yellow material-icons">star_border</i>
+                                </button>
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-just-icon btn-sm" data-original-title="" title="" name="delete" formaction="./destroy" value={#{user.id}#} type="submit">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                            </td>
+                        </tr>
+                        {#% endfor %#}
+                    </tbody>
+                </table>
+            </div>
+    	</div>
+    </div>
+    </div>
+
+{% endblock %}

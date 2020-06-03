@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+  <div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="" id="icon" alt=""/>
+    </div>
+
+    <!-- Login Form -->
+    <form action='./register' method='POST'>
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="username" minlength="3" maxlength="10" oninvalid="this.setCustomValidity('Invalid name')" oninput="this.setCustomValidity('')" required>
+      <input type="text" id="email" class="fadeIn third" name="email" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Invalid email')" oninput="this.setCustomValidity('')" required>
+      {{erreur}}
+      <input type="password" id="password" class="password fadeIn fourth" name="password" placeholder="password" pattern="^\S{8,20}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Invalid password or password confirmation' : ''); if(this.checkValidity()) form.password_confirmation.pattern = this.value;" required>
+      <input type="password" id="password_confirmation" class=" password fadeIn fifth" name="password_confirmation" placeholder="password confirmation" pattern="^\S{8,20}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Invalid password or password confirmation' : '');" required>
+      <input type="submit" class="fadeIn sixth" value="Sign up">
+    </form>
+  </div>
+</div>
+{% endblock %}

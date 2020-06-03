@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify your password {% endblock %}
+
+{% block body %}
+{#change password#}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="" id="icon" alt=""/>
+    </div>
+
+    <!-- Login Form -->
+    <form method='POST'>
+      
+      <input type="password" id="password" class="password fadeIn fourth" name="password" placeholder="password" pattern="^\S{8,20}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Invalid password or password confirmation' : ''); if(this.checkValidity()) form.password_confirmation.pattern = this.value;" required>
+      <input type="password" id="password_confirmation" class=" password fadeIn fifth" name="password_confirmation" placeholder="password confirmation" pattern="^\S{8,20}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Invalid password or password confirmation' : '');" required>
+      <input type="submit" class="fadeIn sixth" value="Save modifications">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

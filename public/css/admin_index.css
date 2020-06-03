@@ -1,0 +1,63 @@
+.header {
+  background-color: MidnightBlue;
+  padding: 70px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: heavy;
+  background-image:url(http://127.0.0.1/my_movies_lists/public/img/header2.jpg);
+  background-size: contain;
+  background-image:opacity: 0.6;
+}
+
+.text-box {
+  position: center;
+  bottom: 20px;
+  right: 20px;
+  /*background-color: BurlyWood;*/
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 0px;
+  padding-left: 0px;
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  font-weight: heavy;
+  text-transform: uppercase;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  /*z-index: 1;*/
+  top: 1000;
+  /*overflow-x: hidden;*/
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: white;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: LightSteelBlue;
+}
+
+.yellow {
+  color: yellow;
+  icon-color
+}
+
+/* If you want the content centered horizontally and vertically */
+/*.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}*/

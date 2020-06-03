@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify your mail{% endblock %}
+
+{% block body %}
+{#change email#}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="" id="icon" alt=""/>
+    </div>
+
+    <!-- Login Form -->
+    <form method='POST'>
+      {{error}}
+      <input type="text" id="email" class="fadeIn third" name="email" placeholder="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninvalid="this.setCustomValidity('Invalid email')" oninput="this.setCustomValidity('')" required>
+      <input type="submit" class="fadeIn sixth" value="Save modifications">
+    </form>
+  </div>
+</div>
+
+{% endblock %}

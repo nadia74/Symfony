@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modify your profile{% endblock %}
+
+{% block body %}
+  {#change name#}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="" id="icon" alt=""/>
+    </div>
+
+    <!-- Login Form -->
+    <form method='POST'>
+      <input type="text" id="username" class="fadeIn second" name="username" placeholder="username" minlength="3" maxlength="10" oninvalid="this.setCustomValidity('Invalid name')" oninput="this.setCustomValidity('')" required>
+      <input type="submit" class="fadeIn sixth" value="Save modifications">
+    </form>
+  </div>
+</div>
+
+
+
+{% endblock %}

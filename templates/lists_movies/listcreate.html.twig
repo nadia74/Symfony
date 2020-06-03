@@ -1,0 +1,51 @@
+{# create.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% form_theme formList 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="http://127.0.0.1/my_movies_lists/public/css/movies_lists.css">
+
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</head>
+
+{% if editMode %}
+<div class="header">
+  <h2 class="text-box">Manage my lists</h2>
+</div>
+
+  {% else %}
+<div class="header">
+  <h2 class="text-box">Create a new list</h2>
+</div>
+  {% endif %}
+
+
+{{ form_start(formList) }}
+
+{{ form_row(formList.listename, {'attr' : {'placeholder': "Enter list's name"}}) }}
+{{ form_row(formList.description, {'attr' : {'placeholder': "Enter list's description"}}) }}
+{{ form_row(formList.liste_favorite, {'attr' : {'placeholder': "Is it your favorite list?"}}) }}
+
+
+<button type="submit" class="btn btn-primary btn-xs pull-left">
+  {% if editMode %}
+    Save modifications
+  {% else %}
+    Add new list
+  {% endif %}
+</button>
+
+{{ form_end(formList) }}
+
+ 
+{% endblock %}

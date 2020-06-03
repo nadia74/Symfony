@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2019/11/07/20/48/cinema-4609877__340.jpg" width="50" height="50" alt="logo" /></a>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+    </ul>
+    
+
+    {% if user is null %}
+    <form action =../register class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign up</button>
+    </form>
+    <form action =../login class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Log in</button>
+    </form>
+
+     {% elseif not user.admin %}
+    <form action =../movies class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Movies</button>
+    </form>
+    <form action =../lists/movies class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">My lists</button>
+    </form>
+   <form action =../favoris class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Favoris</button>
+    </form>
+    <form action =../logout class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+    <form action =../profile class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Profile</button>
+    </form>
+    
+
+
+{% else %}
+    <form action =../admin class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Administration</button>
+    </form>
+    <form action =../movies class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Movies</button>
+    </form>
+    <form action =../logout class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+    {% endif %}
+
+  </div>
+</nav>
+
+
+
+
+{% endblock %}
+

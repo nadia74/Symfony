@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administrator Dashboard{% endblock %}
+
+{% block body %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link type="text/css" rel="stylesheet" href="http://127.0.0.1/my_movies_lists/public/css/admin_index.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+    </head>
+</head>
+<body>
+		<div class="header">
+		  	<h2 class="text-box">Administrator Dashboard</h2>
+		</div>
+
+		
+    <div class="container">  	
+	
+	<div class="split left">
+    	<div class="row">
+            <div class="col-md-12">
+                <h4 class="text-center">Administrate Users</h4>
+            </div>
+
+            <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+            
+            <div>
+                <a href="{{ path('new')}}" class="btn btn-primary btn-xs pull-right"><i class="material-icons">person_add</i></a>
+                
+            </div>
+            
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{% for user in users %}      
+                        <tr>
+                            <td class="text-center">{{user.id}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.email}}</td>
+                            <td class="text-center">
+                            
+                            	<a href="{{ path('showprofile', {'id' : user.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-info btn-link btn-just-icon btn-sm" data-original-title="" title="" name="show">
+                                    <i class="material-icons">remove_red_eye</i>
+                                </button>
+                                </a>
+
+					            {% if user.banned == 1 %}
+                                <a href="{{ path('unban', {'id' : user.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-warning btn-link btn-just-icon btn-sm" data-original-title="" title="" name="ban">
+                                	<i class="material-icons">person_outline</i>
+                                </button>
+                                </a>
+
+                                {% else %}
+                                <a href="{{ path('ban', {'id' : user.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-warning btn-link btn-just-icon btn-sm" data-original-title="" title="" name="ban">
+                                	<i class="material-icons">person</i>
+                                {% endif %}
+                                </button>
+                                </a>
+                            
+                                <a href="{{ path('edit', {'id' : user.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-success btn-link btn-just-icon btn-sm" data-original-title="" title="" name="edit">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                </a>
+
+                                <a href="{{ path('delete', {'id' : user.id}) }}">
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-link btn-just-icon btn-sm" data-original-title="" title="" name="delete">
+                                    <i class="material-icons">close</i>
+                                </button>
+                                </a>
+                        </td>
+                        </tr>
+                        {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>
+    	</div>
+    </div>
+    </div>
+
+
+    <div class="container">
+    <div class="split right">
+    <div class="row">
+            
+            <div class="col-md-12">
+	    		<h4 class="text-center">Films Ranking</h4>
+	    	</div>
+
+	<div class="col-lg-8 col-md-10 ml-auto mr-auto">
+                <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">#</th>
+                            <th>Title</th>
+                            <th>Year</th>
+                            <th>Genre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	{#% for film in films %#}      
+                        <tr>
+                            <td class="text-center">{#{film.id}#}</td>
+                            <td>{#{film.title}#}</td>
+                            <td>{#{film.release_date}#}</td>
+                            <td>{#{film.type}#}</td>
+                        </tr>
+                        {#% endfor %#}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+	</div>
+
+	</div>
+</div>
+{% endblock %}
