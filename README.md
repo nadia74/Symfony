@@ -2,5 +2,8 @@
 
 # Symfony rush
 
-Symfony rush par Nadia, Némésis et Maxime.
+Symfony rush by Nadia, Némésis et Maxime.
+
+Installation :
+composer install
 
